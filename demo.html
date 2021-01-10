@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Today's Date</title>
+    <script>
+    var teacher = "Klyer";
+    // function ontherFunction(){
+    //     var teacher ="Suzy";
+    //     function ask(question){
+    //        console.log(teacher,question);   
+    //     }
+    //     ask("Why");
+    // }
+
+    // ontherFunction(); // Suzy Why
+    // ask("??");  // Uncaught ReferenceError: ask is not defined "Gloabl Scope" Reference Error
+
+    //  Closure : Not Capture a value  , you closure over values at the time you access you sees what the value of the valuable has at this moment
+    // we not closure of the value Klyer you closure the value of teacher
+    // var teacher = "Klyer";
+    // var myTeacher = function () {
+    //     console.log(teacher);
+    // }
+    // teacher = "Suzy";
+    // myTeacher(); // "Suzy"
+
+    // Closure  inner function is returned from the outer function before being executed.
+    // function makeFunc() {
+    //         var name = 'Mozilla';
+    //         function displayName() {
+    //             alert(name);
+    //         }
+    //         return displayName;
+    //     }
+    //     var myFunc = makeFunc();
+    //     myFunc();
+
+    //Closure Loop => we have only one value i it's not capturing the values 
+    // for (var i = 1; i <= 3; i++) {
+    //         setTimeout(function () { console.log(`i:${i}`); }, i * 1000) // i:4 , i:4, i:4
+    //     }//=> to solve this problem stop use the same valuable with the same name
+        // for (var i = 1; i <= 3; i++) {
+        //     let j = i;
+        //     setTimeout(function () { console.log(`j:${j}`); }, j * 1000) // i:4 , i:4, i:4
+        // }   
+        //j:1
+        // j:2
+        // j:3
+      //  ========================================================================================================================
+ // Primitive Types
+//All types except objects define immutable values (that is, values which can't be changed).
+//1-Undefined=>Not object  "Undefined" =>  var x;   typeof x; ==>"Undefined" 
+//2-string=>Not object
+//3-number=>Not object
+//4-boolean=>Not object
+//6-symbol=>Not object
+//7-BigInt=>Not object
+//8-null=>Not object
+//9-undeclared=>Not object
+//5-object=> object
+//7-function=> object
+//7-array=> object
+
+
+// var x = null;
+// console.log(typeof x);  // return object and it's a bug
+// x = function(){};
+// console.log(typeof x);  // function
+// x=[2,3,4];
+// console.log(typeof x);  // object it's historical things about JS
+
+
+// what different between undefined "it's definitly avariable but in this moment it don't have a value" and undeclared "doesn't exists it's never been created in any scope "
+// uninitialized (aka TDZ) don't get initialize  they never initially get set to undefinied , you're not allowed to touch it in any way 
+// Nan is not "not number " this special what indicates an invalid number 
+
+// var myAge = Number("0o46"); // 38
+// var nextAge = Number("36"); //36
+// myAge -'my son';   //Nan
+// var myAge2 = Number("n/a"); // Nan
+// myAge2 === myAge2;   // false 
+// isNaN(myAge); // false
+// isNaN(myAge2);  // true
+// isNaN("is Son");   // true
+// Number.isNaN("is son");  // false
+// Number.isNaN(myAge2);   // true
+
+
+// Negative Zero
+// var trendRate = -0;
+// trendRate === -0; // true
+// trendRate === 0; // true
+// trendRate < 0 ;// false
+// trendRate > 0 ;// false 
+// trendRate.toString();// 0
+// object.is(trendRate,-0); // true
+// object.is(trendRate,0); // flase
+
+// fundmental objects 
+// var x = new Date();   // can construct date 
+// x.toString();
+// var myX = String(school.room);
+
+// abstract operation 
+// In js we refer to type conversion as coercion 
+// the first abstract opertaion we have is called ToPrimitive(hint:optional) hint would like to be i would like to be string or number
+// hint: number
+//=> valueOf()
+//=> toString()
+// hint: string
+//=> toString()
+//=> valueOf()
+// just keep in mind if you're gonna use something that is not a primitive in definitely needs primitive
+// next abstract operation is => toString
+// []  "" when serialize empty array it will be empty string
+// [1,2,3]  "1,2,3"
+// [[],[],[]]  ",,"
+
+
+// coercion
+//+operator  implicit coercions 
+// explicit `there are ${[number].join("")} students`
+// `there are ${number.toString()} students` // how we are calling a method on a primitive value actually we are doing implicit coercion here
+//if you don't use any implicit coerion the only one option 
+//`there are ${String(number)} students`
+
+// Boxing 
+//var x = 'heeloo';
+//x.length// => how we can access length of string that's called boxing it's form for implicit coercion it's not abstract operator  
+//https://medium.com/javascript-in-plain-english/javascript-boxing-wrappers-5b5ff9e5f6ab
+//In JavaScript and other languages, primitives values don’t have methods or properties, so if you want to use them, you need to use a wrapper.
+
+
+//Scope System "Lexical Scope mechanism of js "
+//Nested 
+//Hositing
+//Closure 
+//Modules 
+
+// "use strict"   //=> if you turn on the strict mode all processing is going to happen  
+// // it's many reason to use strict mode to avoid mistakes 
+// var x = "hello";
+// function y(){
+//     x ="yala";
+//     z="hi"; // =>> will get Referrence Erro
+// }
+
+// y();
+// console.log(x);  // yala
+
+// different between undefined and undeclared
+// undefined means a varabile exists but at this moment it has no value 
+// undeclared means never formally declared in any space that we have accessed to 
+
+
+
+
+//Function declarations in JavaScript are hoisted to the top of the enclosing function or global scope. You can use the function before you declared it:
+// console.log(teacher());
+// function teacher(){
+//     console.log('teacher');
+// }
+
+// // fucntion expressions 
+// var myteacher = function anotherTeacher(){
+//     console.log(anotherTeacher);
+// }
+// console.log(teacher);
+// console.log(myteacher);
+// console.log(anotherTeacher); //Uncaught ReferenceError: anotherTeacher is not defined
+//Function expressions in JavaScript are not hoisted,
+
+// we prefer a name function expression becasue the name produces or
+// 1- creates a reliable self-reference to function from inside of itself  "that's useful if you're going to make the function recursive"
+// it's useful if that function is an event handler of some sort and it needs to reference itself to unbind itself.
+// it's useful if you need to access any properties on that function object 
+// 2- More debuggable stack traces
+// 3- More self documenting code
+
+
+// arrow functions that added to ES6
+
+
+// scope 
+// lexical scope
+// dynamic scope
+//https://medium.com/@allansendagi/dynamic-scope-vs-lexical-scope-in-javascript-ca7d21a6d069
+// IIFE Pattern 
+
+// var teacher= 'kryle';
+// function anotherTeacher(){
+//     var teacher ='suzy';  
+//     console.log(teacher);
+// }
+// console.log(teacher);
+
+// (anotherTeacher)();
+// // the same =>
+// // using a function expression to create scope , immediately invoking it
+// // why it's not func declaration =>  becasue the word fuc is not the first thing in statement 
+// (function anotherTeacher(){
+//     var teacher ='suzy';
+//     console.log(teacher);
+// }
+// )();
+// // we can pass any value like
+// (function anotherTeacher(teacher){
+//     console.log(teacher);
+// }
+// )('suzy');
+
+
+    // // let doesn't hoist  false
+    // {
+    //     teacher = 'krlye';    //ReferenceError: Cannot access 'teacher' before initialization
+    //     let teacher;
+    // }
+    // var teacher = 'suzy';
+    // {
+    //     console.log(teacher); //Suzy
+    //     let teacher = 'suzy';
+    // }
+ 
+ // Closure
+ // closure is when a function "remembers" its lexical scope when the function is executed outside that texical scope
+
+ // Modules pattern  : encapsulate data and behavior (methods) together. the state (data) of a module is held by its methods via closure
+ // Modules pattern Data Hiding with the Module Pattern
+ // you don't have a module if you don't have a closure 
+ // IIFE that's kind of like saying it's a singletone 
+
+// function EmployeeDetails() {
+//   var name= "Mayank";
+//   var age = 30;
+//   var designation = "Developer";
+//   var salary = 10000;
+
+
+  
+//   return {
+//     name: name,
+//     age: age,
+//     designation: designation
+//   }
+// }
+
+// var newEmployee = EmployeeDetails()
+
+// // This will result in "undefined" value
+// var userSalary = newEmployee.salary;
+// console.log(userSalary);
+// Use Module pattern for the following benefits:
+// Maintainability: Module Patterns enable better maintainability since all the related code can be encapsulated inside a single logical block. These logically independent blocks are relatively easier to update.
+// Reusability: We single unit of code can be reused across the entire application. Functionality enclosed as a module can be reused and we do not need to define the same functions at multiple points.
+//https://medium.com/technofunnel/data-hiding-with-javascript-module-pattern-62b71520bddd
+
+// prototype  "object.prototype has a getter func called dunder prototypes"
+// prototype chain 
+// Dunder prototypes  __proto__
+// prototype inheritance it's linkage not acopy
+// inheritance vs behaviour delegation
+//OLOO pattern
+// Objects Linked to  Other Objects
+// where in you can create an object without any class => in OLOO AND JS :)
+// Object.creat do this magic :D "CLEAN HIDE CONSCTRUCTOR & FUNC & NEW"
+// var workshop = {
+//         setTeacher(teacher) {
+//             this.teacher = teacher;
+//         },
+//         ask(question) {
+//             console.log(this.teacher, question);
+//         }
+//     }
+// var anotherTeacher= Object.assign(
+//     Object.create(workshop),
+//     {
+//         speakUp(msg){
+//             this.ask(msg.toUpperCase());
+//         }
+//     }
+// );
+// var x= Object.create(anotherTeacher);
+// x.setTeacher('maiada');
+// x.speakUp("okay")
+
+
+// Delegation desgin pattern 
+// do compasion instead over inheritance 
+// we have virtually composed these two objects during func call 
+
+// synactic sugar 
+</script>
+</head>
+
+<body>
+
+    <h1>My First JavaScript</h1>
+
+
+</body>
+</html>
